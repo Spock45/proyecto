@@ -14,13 +14,13 @@ const Navbar = () => {
     if (theme === 'light') {
       return (
         <>
-          <span>On</span>
+          <span></span>
         </>
       );
     } else {
       return (
         <>
-          <span>Off</span>
+          <span></span>
         </>
       );
     }

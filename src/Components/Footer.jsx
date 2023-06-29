@@ -1,16 +1,13 @@
 import React from 'react';
-import facebookIcon from '../assets/ico-Facebook.png';
-import './index.css';
+import instagramIcon from '../assets/ico-instagram.png';
 
 const Footer = () => {
   return (
     <footer>
       <p>Powered by</p>
       <div>
-        <img src={facebookIcon} alt="Fac" />
-       
+        <img src={instagramIcon} alt="Instagram" />
       </div>
-    
     </footer>
   );
 };

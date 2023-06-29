@@ -10,10 +10,16 @@ const Favs = () => {
 
   return (
     <main className={`theme ${theme === 'dark' ? 'dark' : ''}`}>
-      <h1>Favoritos</h1> 
+      <h1>Favoritos</h1>
       <div className="card-grid">
         {favorites.map((dentista) => (
-          <Card key={dentista.id} dentista={dentista} className={`card ${cardTheme}`} />
+          <Card
+            key={dentista.id}
+            dentista={dentista}
+            className={`card ${cardTheme}`}
+            showRating={true}
+            showImage={true}
+          />
         ))}
       </div>
     </main>

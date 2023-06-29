@@ -6,23 +6,22 @@ import '../index.css';
 
 const Card = ({ dentista, addToFavs }) => {
   const addFav = () => {
-    const { name, username, id } = dentista;
-    const cardData = { name, username, id };
-    addToFavs(cardData);
+    addToFavs(dentista.id);
   };
 
   return (
     <div className="card">
-      <img className="doctor-image" src= {doctorImage} alt="Doctor" />
+      <img className="doctor-image" src={doctorImage} alt="Doctor" />
       <h3 className="card-name">{dentista.name}</h3>
-      <p className="card-username">{dentista.username}</p>
-      <p className="card-id">{dentista.id}</p>
+      <p className="card-username">({dentista.username})</p>
+      <p className="card-id">Id: {dentista.id}</p>
       <Link to={`/dentista/${dentista.id}`} className="card-link">
-        Información
+        Ver detalles
       </Link>
       <button onClick={addFav} className="card-favButton">
         Agregar a Favoritos
       </button>
+      <p className="card-likes">Likes: {dentista.likes}</p>
     </div>
   );
 };
@@ -32,6 +31,7 @@ Card.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
   }).isRequired,
   addToFavs: PropTypes.func.isRequired,
 };

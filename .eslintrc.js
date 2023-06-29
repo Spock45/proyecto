@@ -1,3 +1,6 @@
+/* eslint-env browser */
+/* eslint-disable no-undef */
+
 module.exports = {
   env: {
     browser: true,
@@ -15,8 +18,8 @@ module.exports = {
   rules: {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
-    'semi': ['error', 'always'],
+    semi: ['error', 'always'],
     'comma-dangle': ['error', 'only-multiline'],
-    'quotes': ['error', 'single']
+    quotes: ['error', 'single']
   }
 };
