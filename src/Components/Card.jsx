@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import doctorImage from '../assets/doctor.jpg';
 import '../index.css';
 
-const Card = ({ dentista, addToFavs }) => {
+const Card = ({ dentista, addToFavs, isFavorite }) => {
   const addFav = () => {
     addToFavs(dentista.id);
   };
@@ -15,9 +15,11 @@ const Card = ({ dentista, addToFavs }) => {
       <h3 className="card-name">{dentista.name}</h3>
       <p className="card-username">({dentista.username})</p>
       <p className="card-id">Id: {dentista.id}</p>
-      <Link to={`/dentista/${dentista.id}`} className="card-link">
-        Ver detalles
-      </Link>
+      {isFavorite ? (
+        <Link to={`/dentista/${dentista.id}`} className="card-link card-detailsButton">
+          Ver detalles
+        </Link>
+      ) : null}
       <button onClick={addFav} className="card-favButton">
         Agregar a Favoritos
       </button>
@@ -34,6 +36,7 @@ Card.propTypes = {
     likes: PropTypes.number.isRequired,
   }).isRequired,
   addToFavs: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default Card;

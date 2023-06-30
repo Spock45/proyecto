@@ -15,7 +15,9 @@ const Home = () => {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const data = await response.json();
-        setUsers(data);
+
+        const usersWithLikes = data.map((user) => ({ ...user, likes: 0 }));
+        setUsers(usersWithLikes);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -25,6 +27,16 @@ const Home = () => {
 
     fetchUsers();
   }, []);
+
+  const handleAddToFavorites = (userId) => {
+   
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === userId ? { ...user, likes: user.likes + 1 } : user
+      )
+    );
+    addToFavs(userId);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,12 +54,19 @@ const Home = () => {
           <Card
             key={user.id}
             dentista={user}
-            addToFavs={addToFavs}
+            addToFavs={handleAddToFavorites}
             isFavorite={favorites.some((favorite) => favorite.id === user.id)}
-          />
+          >
+            <div className="like-container">
+              <span className="like-text">Likes: </span>
+              <span className="like-count">{user.likes}</span>
+            </div>
+          </Card>
         ))}
       </div>
-      <Link to="/favs">Ver Favoritos</Link>
+      <Link to="/favs" className="favButton">
+        Ver Favoritos
+      </Link>
     </div>
   );
 };

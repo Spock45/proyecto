@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav className={`navbar ${theme === 'dark' ? 'dark' : ''}`}>
       <ul className="navbar-list">
         <li>
-          <Link to="/home">Inicio</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/contacto">Contacto</Link>

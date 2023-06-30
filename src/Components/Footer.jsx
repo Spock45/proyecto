@@ -1,15 +1,21 @@
 import React from 'react';
-import instagramIcon from '../assets/ico-instagram.png';
+import '../index.css';
+import DH from '../assets/DH.png';
+import icoinstagram from '../assets/ico-instagram.png';
 
 const Footer = () => {
   return (
-    <footer>
-      <p>Powered by</p>
+    <footer >
+  
+
       <div>
-        <img src={instagramIcon} alt="Instagram" />
+        <img className="footer-img" src={DH} alt="Digital" style= {{width:'10%'}} />
+        <p className="footer-p"> Digital House 2023</p>
+        <img className="footer >img" src={icoinstagram} alt="ico-Instagram" style= {{width:'10%'}} />
       </div>
     </footer>
   );
 };
 
 export default Footer;
+

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import '../index.css';
 
 const Form = () => {
+  const [theme] = useState('dark');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -31,16 +33,19 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className={`form ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Nombre:</label>
+          <label htmlFor="name" className="label">
+            Nombre:
+          </label>
           <input
             type="text"
             id="name"
             name="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
+            className="input"
             required
           />
         </div>
@@ -52,6 +57,7 @@ const Form = () => {
             name="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            className="input"
             required
           />
         </div>
@@ -62,6 +68,7 @@ const Form = () => {
             name="message"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
+            className="input"
             required
           ></textarea>
         </div>
