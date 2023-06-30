@@ -25,18 +25,22 @@ const Home = () => {
       }
     };
 
+   
     fetchUsers();
   }, []);
 
   const handleAddToFavorites = (userId) => {
-   
+    setLoading(true); 
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.id === userId ? { ...user, likes: user.likes + 1 } : user
       )
     );
     addToFavs(userId);
+    setLoading(false);
   };
+
+  
 
   if (loading) {
     return <div>Loading...</div>;
