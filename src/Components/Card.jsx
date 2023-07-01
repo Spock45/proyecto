@@ -5,10 +5,6 @@ import doctorImage from '../assets/doctor.jpg';
 import '../index.css';
 
 const Card = ({ dentista, addToFavs, isFavorite }) => {
-  const addFav = () => {
-    addToFavs(dentista.id);
-  };
-
   return (
     <div className="card">
       <img className="doctor-image" src={doctorImage} alt="Doctor" />
@@ -20,7 +16,7 @@ const Card = ({ dentista, addToFavs, isFavorite }) => {
           Ver detalles
         </Link>
       ) : null}
-      <button onClick={addFav} className="card-favButton">
+      <button onClick={(event) => addToFavs(dentista.id, event)} className="favButton">
         Agregar a Favoritos
       </button>
       <p className="card-likes">Likes: {dentista.likes}</p>

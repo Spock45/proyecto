@@ -18,34 +18,25 @@ const Home = () => {
 
         const usersWithLikes = data.map((user) => ({ ...user, likes: 0 }));
         setUsers(usersWithLikes);
-       
       } catch (error) {
         setError(error);
+      } finally {
         setLoading(false);
       }
     };
 
-   
     fetchUsers();
   }, []);
 
-
-
-
-  const handleAddToFavorites = (userId) => {
-    setLoading(true); 
+  const handleAddToFavorites = (userId, event) => {
+    event.preventDefault();
+    addToFavs(userId);
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.id === userId ? { ...user, likes: user.likes + 1 } : user
       )
     );
-    addToFavs(userId);
-    
   };
-
-  useEffect(() => {
-    setLoading(false);
-  }, [users]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -65,12 +56,7 @@ const Home = () => {
             dentista={user}
             addToFavs={handleAddToFavorites}
             isFavorite={favorites.some((favorite) => favorite.id === user.id)}
-          >
-            <div className="like-container">
-              <span className="like-text">Likes: </span>
-              <span className="like-count">{user.likes}</span>
-            </div>
-          </Card>
+          />
         ))}
       </div>
       <Link to="/favs" className="favButton">
