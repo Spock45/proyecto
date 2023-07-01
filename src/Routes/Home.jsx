@@ -18,7 +18,7 @@ const Home = () => {
 
         const usersWithLikes = data.map((user) => ({ ...user, likes: 0 }));
         setUsers(usersWithLikes);
-        setLoading(false);
+       
       } catch (error) {
         setError(error);
         setLoading(false);
@@ -29,6 +29,9 @@ const Home = () => {
     fetchUsers();
   }, []);
 
+
+
+
   const handleAddToFavorites = (userId) => {
     setLoading(true); 
     setUsers((prevUsers) =>
@@ -37,10 +40,12 @@ const Home = () => {
       )
     );
     addToFavs(userId);
-    setLoading(false);
+    
   };
 
-  
+  useEffect(() => {
+    setLoading(false);
+  }, [users]);
 
   if (loading) {
     return <div>Loading...</div>;
